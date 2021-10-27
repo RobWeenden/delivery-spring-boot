@@ -22,4 +22,9 @@ public class IndexController {
 	public String ambiente() {
 		return "ambiente";
 	}
+	
+	@GetMapping("/delivery")
+	public String delivery() {
+		return "delivery/index";
+	}
 }
