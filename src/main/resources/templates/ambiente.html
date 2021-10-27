@@ -1,10 +1,110 @@
-<!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
 <head>
-<meta charset="ISO-8859-1">
 <title>Ambiente</title>
 </head>
 <body>
-	tela de ambiente
+	<h1 layout:fragment="header">Ambiente - Spring Actuator</h1>
+	<div layout:fragment="content" class="container">
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>link</th>
+						<th>descricao</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<p>
+								<a href="#" th:href="@{/actuator}">actuator</a>
+							</p>
+						</td>
+						<td>
+							<p>
+								lista todos os links diponiveis
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>
+								<a href="#" th:href="@{/actuator/threaddump}">threaddump</a>
+							</p>
+						</td>
+						<td>
+							<p>
+								Faz um thread dump
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>
+								<a href="#" th:href="@{/actuator/env}">env</a>
+							</p>
+						</td>
+						<td>
+							<p>
+								Mostra properties do CE do Spring.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>
+								<a href="#" th:href="@{/actuator/health}">health</a>
+							</p>
+						</td>
+						<td>
+							<p>
+								Mostra informacoes do status da aplicacao.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>
+								<a href="#" th:href="@{/actuator/metrics}">metrics</a>
+							</p>
+						</td>
+						<td>
+							<p>
+								Mostra metricas da aplicacao.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>
+								<a href="#" th:href="@{/actuator/mappings}">mappings</a>
+							</p>
+						</td>
+						<td>
+							<p>
+								Exibe os caminhos dos @RequestMapping.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>
+								<a href="#" th:href="@{/actuator/httptrace}">httptrace</a>
+							</p>
+						</td>
+						<td>
+							<p>
+								Exibe o trace dos ultimos 100 request HTTP.
+							</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<br>
+			<a href="#" th:href="@{/properties}" class="btn	btn-large	btn-success">System Properties</a>
+		</div>
+	</div>
 </body>
 </html>
