@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	ng-app="delivery">
 <head>
-<title>Green Dog Delivery</title>
+<title>Dog Delivery</title>
 <!-- Bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -30,6 +30,72 @@
 </style>
 </head>
 <body>
-	entrou no delivery
+	<div class="container">
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="navbar-header">
+				<a class="navbar-brand" th:href="@{/}"><img th:src="@{/img/hotdog-logo.png}"/></a>
+			</div>
+				<ul class="nav navbar-nav">
+				  <li><a class="brand" href="https://www.casadocodigo.com.br">Casa do Código</a></li>
+				  <li><a class="brand" href="https://www.boaglio.com">boaglio.com</a></li>
+				  <li><a class="brand" href="https://projects.spring.io/spring-boot/">Spring Boot</a></li>
+				  <li><a class="brand" href="https://github.com/ultraq/thymeleaf-layout-dialect">Thymeleaf Layout</a></li>
+				</ul>
+		</nav>
+		<div ng-controller="pedidoController">
+			<form class="form-horizontal">
+				<fieldset>
+					<legend>Delivery - Novo Pedido</legend>
+					<div class="form-group">
+						<label class="col-md-12" for="checkboxes">
+							<img alt="" src="../img/hotdog.svg" style="width:50px;margin:-12px 0px;"/>
+								Cardapio
+						</label>
+					</div>
+					<div>
+						<div class="col-md-12">
+							<div class="checkbox checkbox-primary" ng-repeat="i in itens">
+								<label for="checkboxes-0" class="opcao">
+									<input name="checkboxes" class="" 
+									checklist-model="pedidoItens"
+									checklist-value="i"
+									ng-click="isItemSelecionado(i)"
+									type="checkbox"/>&nbsp;
+									{{i.nome}} [R${{i.preco}}]
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-12" for="btnSubmit">Subtotal: R${{subTotal}}</label>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12">
+							<button id="btnSubmit" name="btnSubmit" ng-click="fazerPedido(pedidoItens)"
+							class="btn btn-primary">Fazer o pedido</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+			<div class="alert alert-success" ng-show="idPedido!=null">
+				<strong>Pedido {{idPedido}}</strong> {{mensagem}}
+			</div>
+			<div class="alert alert-warning" ng-show="idPedido!=null">
+				Valor do pedido: <strong>{{valorTotal}}</strong> reais.
+			</div>
+			<div class="alert alert-warning" ng-show="idPedido!= null">
+				Chamado do servico: <strong>{{urlPedido}}</strong>
+			</div>
+			<fieldset>{{message}}</fieldset>
+			<div class="alert alert-danger" ng-show="oferta!='nenhuma'">
+				<img th:src="@{/img/oferta.png}"/>{{oferta}}
+				<div ng-show="debug==1">
+					<br/>
+					<img th:src="@{/img/servidor.png}"/>
+					<strong>{{servidor}}</strong>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

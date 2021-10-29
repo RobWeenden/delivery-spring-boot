@@ -7,5 +7,6 @@ import br.com.deilvery.domain.Cliente;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
-
+	
+	Cliente findByNome(String nome);
 }
